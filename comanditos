@@ -1,0 +1,5 @@
+apt update #actualizo paquetes
+apt install lighttpd #instalo el webserver
+apt remove apache2 #se elimina apache2 por que hay problemas de compatibilidad con el web server
+/etc/init.d/lighttpd start #inicio el we server
+nano var/www/html/index.lighttpd.html #editar html de la pagina
