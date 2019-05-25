@@ -9,7 +9,7 @@
 #include <time.h>
 #include <sys/sysinfo.h>
 
-#define TAM 1024
+#define TAM  3096
 struct datillos
 {
     char uptime[TAM];
@@ -20,6 +20,11 @@ int main(int argc, char *argv[])
 {
     FILE *top, *uptime;
 	struct sysinfo up_time;
+	int error=sysinfo(&up_time);
+	if(error!=0)
+	{
+		printf("error = %d \n", error);
+	}
     char lectura[TAM]={0};
     char comando[TAM]={0};
 	char comando_aux[TAM]={0};
@@ -42,15 +47,17 @@ int main(int argc, char *argv[])
     //obtengo de ps(process status) la informacion actual
 	//de mi proceso. Donde vsize: tamanio de memoria virtual del proceso en KB,
 	//pid: es el id de mi proceso y pcpu: es el %cpu del mismo
-	strcpy(comando, "ps -Ao vsize,pid,pcpu | grep ");
-	sprintf(comando_aux, "%ld", (long)getpid());
-	strcat(comando, comando_aux);
-	strcat(comando," >> ./top.info");
-	system("rm ./top.info");
-	system(comando);
-	top = fopen("./top.info", "r");
+	
+	//strcpy(comando, "ps -Ao vsize,pid,pcpu | grep ");
+//	sprintf(comando_aux, "%ld", (long)getpid());
+//	strcat(comando, comando_aux);
+//	strcat(comando," >> ./top.info");
+//	system("rm ./top.info");
+//	system(comando);
+	
+	top = fopen("/proc/cpuinfo", "r");
 	fread(lectura, 1, sizeof(lectura) - 1, top);
-	strtok(lectura, "\n");
+//	strtok(lectura, "\n");
 	strcpy(Datillos.consum_cpu, lectura);
 	memset(lectura, '\0', TAM);
 	fclose(top);
@@ -60,5 +67,5 @@ int main(int argc, char *argv[])
 	myTime = time(NULL);
 	printf("\n Fecha y hora actual: \n %s \n", ctime(&myTime));
 	printf("\n Uptime (seg): \n %ld \n", up_time.uptime);
-	printf("\n Consumo de memoria(Kb) | Id Proceso | CPU: \n %s \n", Datillos.consum_cpu);
+	printf("\n Info CPU : \n %s \n", Datillos.consum_cpu);
 }
