@@ -18,7 +18,7 @@ struct datillos
 
 int main(int argc, char *argv[])
 {
-    FILE *top, *uptime;
+    FILE *top;//, *uptime;
 	struct sysinfo up_time;
 	int error=sysinfo(&up_time);
 	if(error!=0)
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	char comando_aux[TAM]={0};
 
     //--------tiempo que lleva activo
-	strcpy(comando, "ps -p ");
+	/*strcpy(comando, "ps -p ");
 	sprintf(comando_aux, "%ld", (long)getpid());
 	strcat(comando, comando_aux);
 	strcat(comando," -o etime= ");
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 	strtok(lectura, "\n");
 	strcpy(Datillos.uptime, lectura);
     memset(lectura, '\0', TAM);//limpio buffer de lectura
-	fclose(uptime);
+	fclose(uptime);*/
 
     //obtengo de ps(process status) la informacion actual
 	//de mi proceso. Donde vsize: tamanio de memoria virtual del proceso en KB,
