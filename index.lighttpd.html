@@ -79,8 +79,8 @@
       <h2 class="text-center text-uppercase text-white">Formulario</h2>
       <hr class="star-light mb-5">
 	<form  method="get" action="./formulario/eFormulario_v2.cgi">
-	Ingresa un texto: <input name="año" type="numero" value="Por favor, ingresa año" />
-	<input name="dia" type="numero" value="Por favor, ingresa dia" />
+	Ingresa un texto: <input name="año" type="numero" placeholder="Por favor, ingresa año" />
+	<input name="dia" type="numero" placeholder="Por favor, ingresa dia" />
 	<div class="button">
     	<button type="submit">Buscar</button>
 	</div>
@@ -95,12 +95,21 @@
       <hr class="star-dark mb-5">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-	<iframe allowtransparency="true" src="./modulitos/eModulitos.cgi" frameborder="0" height="700" width="700%">
+	<iframe allowtransparency="true" src="./modulitos/eModulitos.cgi" frameborder="0" height="500" width="700%">
         </iframe>
-          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-          <!--form name="sentMessage" id="ModuloForm" novalidate="novalidate">
-          </form-->
+	<!--form action="./modulitos/upload.cgi" method="post" enctype="multipart/form-data">
+	 <p>Modulo a cargar: <input type="file" name="archivito" /></p>
+	 <!--p>Your Email Address: <input type="text" name="email_address" /></p-->
+	 <!--p><input type="submit" name="Submit" value="Subir" /></p>
+	 </form-->
+	<form target="mod-iframe" method="post" enctype="multipart/form-data" class="form-inline d-flex" action="./modulitos/upload.cgi">
+        <input type="file" class="btn btn-primary mx-auto" name="archivito">
+        <hr class="my-4">
+        <button type="submit" class="btn btn-primary mx-auto">Subir</button>
+        <hr class="my-4">
+	</form>
+        <iframe name="mod-iframe"src="./modulitos/upload.cgi" width="400" height="100">
+	</iframe>
         </div>
       </div>
     </div>

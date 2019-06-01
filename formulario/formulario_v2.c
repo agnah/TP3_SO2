@@ -8,60 +8,30 @@
 #include <dirent.h>
 #include <sys/sysinfo.h>
 
-int main(int argc, char* argv[]) {
-char* readInput = strchr(getenv("QUERY_STRING"),'=')+1;
+int main(int argc, char* argv[]) 
+{
+        char* readInput = strchr(getenv("QUERY_STRING"),'=')+1;
 
-char *inputParse = strdup(readInput);
-char anio[10]={0};
-char dia[10]={0};
-//printf("cadena: %s", inputParse);
+        char *inputParse = strdup(readInput);
+        char anio[10]={0};
+        char dia[10]={0};
 
-strcat(anio,inputParse);
-strcat(dia,inputParse);
+        strcat(anio,inputParse);
+        strcat(dia,inputParse);
 
-char *year=strtok(dia,"&");
-printf("Anio solicitado: %s \n",year);
+        char *year=strtok(dia,"&");
+        char *day=strtok(NULL," ");
+        day=strtok(day,"=");
+        day=strtok(NULL," ");
+	printf(" \n Informacion solicitada del %s / %s (DOI) \n",year,day);
+        char path[100]={0};
+        strcpy(path,"aws s3 --no-sign-request ls --recursive noaa-goes16/ABI-L2-CMIPF/");
+        strcat(path,year);
+        strcat(path,"/");
+        strcat(path,day);
+        strcat(path,"/");
+        strcat(path," | grep M3C13");
+        system(path);
 
-char *day=strtok(NULL," ");
-day=strtok(day,"=");
-day=strtok(NULL," ");
-printf("Dia solicitado: %s \n",day);
-
-char path[100]={0};
-strcpy(path,"aws s3 --no-sign-request ls --recursive noaa-goes16/ABI-L2-CMIPF/");
-strcat(path,year);
-strcat(path,"/");
-strcat(path,day);
-strcat(path,"/");
-strcat(path," | grep M3C13");
-strcat(path," >> ./info_aws");
-//printf("%s \n",path);
-
-//system("aws s3 --no-sign-request ls --recursive noaa-goes16/ABI-L2-CMIPF/2017/320/ > ./info");
-
-system("rm ./info_aws");
-system("touch ./info_aws");
-system(path);
-
-        FILE *fp;
-        int tam_file_send, n;
-        char buffer[1024];
-
-        fp=fopen("./info_aws","r");
-        if (fp == NULL)
-        {
-                printf("Error al abrir el file\n");
-		exit(1);
-        }
- 
-        while(!feof(fp))        //Si no llegue al final del archivo
-        {       
-                memset(buffer,'\0',sizeof(buffer));//Quiero mandar mas de un paquete lo reinicializo
-                fread(buffer, 1, sizeof(buffer), fp);
-                printf("%s \n",buffer);
-        }
-        fclose(fp);     
-
-return 0;
-
+        return 0;
 }
