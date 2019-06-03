@@ -78,13 +78,16 @@
     <div class="container">
       <h2 class="text-center text-uppercase text-white">Formulario</h2>
       <hr class="star-light mb-5">
-	<form  method="get" action="./formulario/eFormulario_v2.cgi">
+	<!--form  method="get" action="./formulario/eFormulario_v2.cgi"-->
+	<form target="mod-iframe" method="get" enctype="multipart/form-data" class="form-inline d-flex" action="./formulario/eFormulario_v2.cgi">
 	Ingresa un texto: <input name="año" type="numero" placeholder="Por favor, ingresa año" />
 	<input name="dia" type="numero" placeholder="Por favor, ingresa dia" />
 	<div class="button">
     	<button type="submit">Buscar</button>
 	</div>
 	</form>
+	<iframe name="mod-iframe" width="1200" height="500">
+        </iframe>
     </div>
   </section>
 
@@ -95,20 +98,15 @@
       <hr class="star-dark mb-5">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-	<iframe allowtransparency="true" src="./modulitos/eModulitos.cgi" frameborder="0" height="500" width="700%">
+	<iframe allowtransparency="true" src="./modulitos/eModulitos.cgi" frameborder="0" height="900" width="500">
         </iframe>
-	<!--form action="./modulitos/upload.cgi" method="post" enctype="multipart/form-data">
-	 <p>Modulo a cargar: <input type="file" name="archivito" /></p>
-	 <!--p>Your Email Address: <input type="text" name="email_address" /></p-->
-	 <!--p><input type="submit" name="Submit" value="Subir" /></p>
-	 </form-->
 	<form target="mod-iframe" method="post" enctype="multipart/form-data" class="form-inline d-flex" action="./modulitos/upload.cgi">
         <input type="file" class="btn btn-primary mx-auto" name="archivito">
         <hr class="my-4">
         <button type="submit" class="btn btn-primary mx-auto">Subir</button>
         <hr class="my-4">
 	</form>
-        <iframe name="mod-iframe"src="./modulitos/upload.cgi" width="400" height="100">
+        <iframe name="mod-iframe" frameborder="0" style="border:0" src="./modulitos/upload.cgi" width="400" height="100">
 	</iframe>
         </div>
       </div>
