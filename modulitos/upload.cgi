@@ -15,7 +15,7 @@ my $filename = $query->param("archivito");
 if ( !$filename )
 {
 print $query->header ( );
-print "Hubo un problema al intentar cargar su archivo (intente nuevamente).";
+print "Intentelo nuevamente";
 exit;
 }
 
@@ -45,6 +45,6 @@ print UPLOADFILE;
 
 close UPLOADFILE;
 
+my $carga_modulo = system("sudo insmod $upload_dir/$filename");
 print $query->header ();
-
-print "Archivo subido con exito!";
+print "Modulo subido con exito!";

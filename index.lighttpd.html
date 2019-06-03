@@ -79,14 +79,14 @@
       <h2 class="text-center text-uppercase text-white">Formulario</h2>
       <hr class="star-light mb-5">
 	<!--form  method="get" action="./formulario/eFormulario_v2.cgi"-->
-	<form target="mod-iframe" method="get" enctype="multipart/form-data" class="form-inline d-flex" action="./formulario/eFormulario_v2.cgi">
+	<form target="iframe-formulario" method="get" enctype="multipart/form-data" class="form-inline d-flex" action="./formulario/eFormulario_v2.cgi">
 	Ingresa un texto: <input name="año" type="numero" placeholder="Por favor, ingresa año" />
 	<input name="dia" type="numero" placeholder="Por favor, ingresa dia" />
 	<div class="button">
     	<button type="submit">Buscar</button>
 	</div>
 	</form>
-	<iframe name="mod-iframe" width="1200" height="500">
+	<iframe name="iframe-formulario" src="./formulario/eFormulario_v2.cgi" width="1200" height="500">
         </iframe>
     </div>
   </section>
@@ -98,7 +98,7 @@
       <hr class="star-dark mb-5">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-	<iframe allowtransparency="true" src="./modulitos/eModulitos.cgi" frameborder="0" height="900" width="500">
+	<iframe  src="./modulitos/eModulitos.cgi" frameborder="0" height="900" width="500">
         </iframe>
 	<form target="mod-iframe" method="post" enctype="multipart/form-data" class="form-inline d-flex" action="./modulitos/upload.cgi">
         <input type="file" class="btn btn-primary mx-auto" name="archivito">
@@ -106,7 +106,7 @@
         <button type="submit" class="btn btn-primary mx-auto">Subir</button>
         <hr class="my-4">
 	</form>
-        <iframe name="mod-iframe" frameborder="0" style="border:0" src="./modulitos/upload.cgi" width="400" height="100">
+        <iframe name="mod-iframe" frameborder="0" src="./modulitos/upload.cgi" width="400" height="100">
 	</iframe>
         </div>
       </div>
