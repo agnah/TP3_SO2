@@ -67,8 +67,33 @@
     <div class="container">
       <h2 class="text-center text-uppercase text-secondary mb-0">Recursos info</h2>
       <hr class="star-dark mb-5">
-      <!--div-->
-      <iframe allowtransparency="true" src="./infoRecursos/eRecursos.cgi" frameborder="0" height="800" width="800%">
+  <div class="row">
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+	  <i class='far fa-calendar-alt' style='font-size:48px;color:purpure'></i>
+          <h3 class="h4 mb-2">FECHA Y HORA ACTUAL</h3>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 text-center">
+	<div class="mt-5">
+          <i class='fas fa-hourglass-half' style='font-size:48px;color:purpure'></i>
+          <h3 class="h4 mb-2">UPTIME</h3>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+          <i class='fas fa-microchip' style='font-size:48px;color:purpure'></i>
+          <h3 class="h4 mb-2">CPU CONSUMO</h3>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+          <i class='fas fa-memory' style='font-size:48px;color:purpure'></i>
+          <h3 class="h4 mb-2">MEMORIA</h3>
+        </div>
+      </div>
+  </div>  
+      <iframe allowtransparency="true" src="./infoRecursos/eRecursos.cgi" frameborder="0" height="900" width="800%">
       </iframe>
     </div>
   </section>
@@ -86,7 +111,7 @@
     	<button type="submit">Buscar</button>
 	</div>
 	</form>
-	<iframe name="iframe-formulario" src="./formulario/eFormulario_v2.cgi" width="1200" height="500">
+	<iframe name="iframe-formulario" width="1200" height="500">
         </iframe>
     </div>
   </section>
@@ -103,7 +128,8 @@
 	<form target="mod-iframe" method="post" enctype="multipart/form-data" class="form-inline d-flex" action="./modulitos/upload.cgi">
         <input type="file" class="btn btn-primary mx-auto" name="archivito">
         <hr class="my-4">
-        <button type="submit" class="btn btn-primary mx-auto">Subir</button>
+        <button type="submit" class="btn btn-primary mx-auto">CARGAR MODULO</button>
+	<button type="submit" class="btn btn-primary mx-auto">BAJAR  MODULO</button>
         <hr class="my-4">
 	</form>
         <iframe name="mod-iframe" frameborder="0" src="./modulitos/upload.cgi" width="400" height="100">
