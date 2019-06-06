@@ -15,16 +15,11 @@ my $filename = $query->param("archivito");
 if ( !$filename )
 {
 print $query->header ( );
-print "Seleccione un modulo para cargar";
+print "  ";
 exit;
 }
 
-my ( $name, $path, $extension ) = fileparse ( $filename,qr/\.[^.]*/ );
-if($extension ne ".ko") 
-{
-    error("Usted no ha ingresado un modulo con la extension incorrecta");
-}
- 
+my ( $name, $path, $extension ) = fileparse ( $filename, '..*' );
 $filename = $name . $extension;
 $filename =~ tr/ /_/;
 $filename =~ s/[^$safe_filename_characters]//g;
@@ -35,7 +30,7 @@ $filename = $1;
 }
 else
 {
-die "El nombre del archivo contiene caracteres invalidos.";
+die "Filename contains invalid characters";
 }
 
 my $upload_filehandle = $query->upload("archivito");
@@ -47,25 +42,10 @@ while ( <$upload_filehandle> )
 {
 print UPLOADFILE;
 }
-
 close UPLOADFILE;
 
-my $carga_modulo = system("sudo insmod $upload_dir/$filename");
-if ($carga_modulo ne 0) 
-{
-  error('FAIL CARGANDO MODULO!');
-}
-else
-{
-	print $query-> header ();
-	print "Modulo subido con exito!";
-}
+my $baja_modulo = system("sudo rmmod $upload_dir/$filename");
+print $query->header ();
 
-sub error 
-{
-   print $query->header(),
-         $query->start_html(-title=>'Error'),
-         shift,
-         $query->end_html;
-   exit(0);
-}
+print "Modulo ha sido removido con exito!";
+
