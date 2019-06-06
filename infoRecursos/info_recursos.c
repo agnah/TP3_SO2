@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	printf("error = %d \n", error);
     }
     char lectura[TAM]={0};
-    char buffer[TAM]={0};
+    //char buffer[TAM]={0};
     char comando[TAM];
     char comando_aux[TAM];
 //------------------------------informacion del CPU
