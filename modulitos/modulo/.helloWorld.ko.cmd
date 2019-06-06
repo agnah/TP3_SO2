@@ -1,0 +1,1 @@
+cmd_/var/www/html/TP3_SO2/modulitos/modulo/helloWorld.ko := ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /var/www/html/TP3_SO2/modulitos/modulo/helloWorld.ko /var/www/html/TP3_SO2/modulitos/modulo/helloWorld.o /var/www/html/TP3_SO2/modulitos/modulo/helloWorld.mod.o ;  true
