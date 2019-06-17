@@ -22,7 +22,7 @@ exit;
 my ( $name, $path, $extension ) = fileparse ( $filename,qr/\.[^.]*/ );
 if($extension ne ".ko") 
 {
-    error("Usted no ha ingresado un modulo con la extension incorrecta");
+    error("Usted ha ingresado un modulo con la extension incorrecta");
 }
  
 $filename = $name . $extension;
@@ -50,7 +50,8 @@ print UPLOADFILE;
 
 close UPLOADFILE;
 
-my $carga_modulo = system("sudo insmod $upload_dir/$filename");
+#system "sudo dmesg -C"; #borra los mensajes de los modulos cargados previamente
+my $carga_modulo = system ("sudo insmod $upload_dir/$filename");
 if ($carga_modulo ne 0) 
 {
   error('FAIL CARGANDO MODULO!');
