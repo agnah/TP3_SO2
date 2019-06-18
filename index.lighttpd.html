@@ -140,10 +140,10 @@
 	</div>
 	
 	<div>
-	<form target="mod-down-iframe" method="post" enctype="multipart/form-data" action="./modulitos/download.cgi">
-	  <input type="file" class="btn btn-primary mx-auto" name="archivito">
+	<form target="mod-down-iframe" method="get" enctype="multipart/form-data" action="./modulitos/eRemove.cgi">
+	  <input type="string"  name="archivito" placeholder="Ingrese modulo a remover">
           <hr class="my-4">
-          <button type="submit" class="btn btn-primary mx-auto">REMOVER MODULO</button>
+          <button type="string" class="btn btn-primary mx-auto">REMOVER MODULO</button>
           <hr class="my-4">
         </form>
         <iframe name="mod-down-iframe" frameborder="0" src="./modulitos/upload.cgi" width="300" height="100"></iframe>

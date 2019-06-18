@@ -50,7 +50,7 @@ print UPLOADFILE;
 
 close UPLOADFILE;
 
-#system "sudo dmesg -C"; #borra los mensajes de los modulos cargados previamente
+system "sudo dmesg -C"; #borra los mensajes de los modulos cargados previamente
 my $carga_modulo = system ("sudo insmod $upload_dir/$filename");
 if ($carga_modulo ne 0) 
 {
@@ -59,7 +59,7 @@ if ($carga_modulo ne 0)
 else
 {
 	print $query-> header ();
-	print "Modulo subido con exito!";
+	print (system("dmesg"));
 }
 
 sub error 
