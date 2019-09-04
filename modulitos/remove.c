@@ -16,13 +16,13 @@ int main(int argc, char* argv[])
 
     char mod_remover[100]={0};
     
-    system("sudo dmesg -C");
+    system("sudo dmesg -C"); //limpio mensajes
 
-    strcpy(mod_remover,"sudo rmmod ");
-    strcat(mod_remover,name);
-    system(mod_remover);
+    strcpy(mod_remover,"sudo rmmod "); 
+    strcat(mod_remover,name); //armo comando para system
+    system(mod_remover); //ejecuto system para remover modulo 
 
-    system("sudo dmesg");    
+    system("sudo dmesg");    //imprimo mensajes 
 
     return 0;
 }
